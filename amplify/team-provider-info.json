@@ -17,6 +17,15 @@
       },
       "api": {
         "fileupload": {}
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d3kub6dh4ls7yi",
+          "type": "cicd"
+        }
+      },
+      "storage": {
+        "s3e8db60ae": {}
       }
     }
   }
