@@ -15,17 +15,14 @@
       "auth": {
         "fileuploadb1c4a2dd": {}
       },
-      "api": {
-        "fileupload": {}
+      "storage": {
+        "s3e8db60ae": {}
       },
       "hosting": {
         "amplifyhosting": {
           "appId": "d3kub6dh4ls7yi",
           "type": "cicd"
         }
-      },
-      "storage": {
-        "s3e8db60ae": {}
       }
     }
   }

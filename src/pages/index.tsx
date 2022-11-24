@@ -1,20 +1,27 @@
 import { useRef, useState } from 'react';
 import { Storage } from '@aws-amplify/storage';
-import Uploady, { FILE_STATES } from '@rpldy/uploady';
+import Uploady, {
+  BatchItem,
+  FILE_STATES,
+} from '@rpldy/uploady';
+import {
+  SendOptions,
+} from '@rpldy/shared';
 import {
   SendMethod,
   SendResult,
+  OnProgress,
 } from '@rpldy/sender';
 import UploadButton from "@rpldy/upload-button";
 
 // type SendMethod = (item: BatchItem[], url: string | undefined, options: SendOptions, onProgress?: OnProgress) => SendResult;
 
 const sendMethod = (
-  item, //: BatchItem[],
-  url, // : string | undefined,
-  options, //: SendOptions,
-  onProgress, // ?: OnProgress,
-) => {
+  item: BatchItem[],
+  url: string | undefined,
+  options: SendOptions,
+  onProgress?: OnProgress,
+): SendResult => {
 
   console.log('1:sendMethod', item);
   console.log('1:sendMethod', url);
@@ -56,8 +63,9 @@ const sendMethod = (
   );
 
   const abort = () => {
-    console.log('abort', promise);
-    return Storage.cancel(promise, "my message for cancellation");
+    console.log('abort', request);
+    Storage.cancel(request, "my message for cancellation");
+    return true;
   };
 
   const senderType = "amplify-s3-sender";
@@ -86,7 +94,7 @@ export default function Home() {
     >
       <div className="App">
         <h2>S3 Upload example...</h2>
-        <UploadButton/>
+        <UploadButton />
       </div>
     </Uploady>
   );
